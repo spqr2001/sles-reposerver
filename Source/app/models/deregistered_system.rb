@@ -1,2 +1,0 @@
-class DeregisteredSystem < ApplicationRecord
-end
