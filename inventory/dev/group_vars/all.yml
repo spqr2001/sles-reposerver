@@ -3,6 +3,15 @@ rmt_image:
 db_image: artifacts.ruv.de/mariadb:10.2
 nginx_image: artifacts.ruv.de/nginx
 
+# Docker Vars 
+db_volume: /srv/www/rmt/public/
+rmt_command: /bin/bash -c 'bundle.ruby2.5 exec rails db:migrate && bundle.ruby2.5 exec rails s -b rmt'
+nginx_root_volume: /public:/var/www/
+nginx_conf_volume: /tmp/default.template
+- ./public:/var/www/
+      - ./nginx/default.conf:/tmp/default.template
+
+
 # Environment Variables 
 MYSQL_ROOT_PASSWORD=toor
 MYSQL_DATABASE=rmt
